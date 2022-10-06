@@ -1,21 +1,26 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { Container } from 'react-bootstrap';
 import Hero from './Hero';
 
-const Landing = ({
-  prop,
-  roberto,
-  numero,
-  funcion,
-}) => {
+const Landing = () => {
+  const [counterState, setCounterState] =
+    useState(1);
+
+  const add = () => {
+    setCounterState(counterState + 1);
+  };
+  const sub = () => {
+    setCounterState(counterState - 1);
+  };
+
   return (
     <div>
       <Hero />
-      <h2>{prop}</h2>
-      <h2>{roberto}</h2>
-      <h2>{numero}</h2>
-      <button onClick={() => funcion()}>
-        Callback
-      </button>
+      <Container className="d-flex justify-content-center align-items-center mt-4">
+        <button onClick={() => sub()}>-</button>
+        <div className="mx-2">{counterState}</div>
+        <button onClick={() => add()}>+</button>
+      </Container>
     </div>
   );
 };
