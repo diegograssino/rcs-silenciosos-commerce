@@ -1,20 +1,11 @@
-import React, {
-  useEffect,
-  useState,
-} from 'react';
+import React from 'react';
 import Navbar from '../components/Navbar';
 import Landing from '../components/Landing';
 import Footer from '../components/Footer';
 import { Container } from 'react-bootstrap';
+import ProductListContainer from '../components/ProductListContainer';
 
 const Main = () => {
-  const [data, setData] = useState([]);
-  useEffect(() => {
-    fetch('https://fakestoreapi.com/products/1')
-      .then(res => res.json())
-      .then(json => setData(json));
-  }, [data]);
-
   return (
     <>
       <Container
@@ -23,10 +14,7 @@ const Main = () => {
       >
         <Navbar />
         <Landing />
-        <div>{data.title}</div>
-        <div>{data.price}</div>
-        <div>{data.description}</div>
-
+        <ProductListContainer />
         <Footer />
       </Container>
     </>
