@@ -3,6 +3,7 @@ import React, {
   useState,
 } from 'react';
 import ProductList from './ProductList';
+import Landing from './Landing';
 
 const ProductListContainer = () => {
   const [data, setData] = useState([]);
@@ -12,7 +13,12 @@ const ProductListContainer = () => {
       .then(json => setData(json));
     console.log(data);
   }, []);
-  return <ProductList data={data} />;
+  return (
+    <>
+      <Landing />
+      <ProductList data={data} />
+    </>
+  );
 };
 
 export default ProductListContainer;

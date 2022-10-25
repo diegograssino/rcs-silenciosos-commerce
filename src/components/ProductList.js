@@ -7,7 +7,7 @@ const ProductList = props => {
     <Container>
       <Row xs={1} md={4} className="g-4">
         {props.data.map((d, i) => (
-          <Product d={d} key={i} />
+          <Product d={d} key={'Product' + i} />
         ))}
       </Row>
     </Container>
