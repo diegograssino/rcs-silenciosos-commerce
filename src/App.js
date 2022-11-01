@@ -3,12 +3,38 @@ import './css/globals.css';
 import { BrowserRouter } from 'react-router-dom';
 
 import Main from './pages/Main';
+import { useState, useEffect } from 'react';
 
 function App() {
-  // Zona JS
+  const [cart, setCart] = useState([]);
+  // CART
+  useEffect(() => {
+    console.log(cart);
+  }, [cart]);
+
+  const add = p => {
+    setCart([...cart, p]);
+  };
+
+  const del = p => {
+    console.log(p);
+  };
+
+  const mod = p => {
+    console.log(p);
+  };
+
+  const total = () => {
+    console.log('total');
+  };
+
+  const clear = () => {
+    console.log('clear');
+  };
+
   return (
     <BrowserRouter>
-      <Main />
+      <Main cart={cart} add={add} />
     </BrowserRouter>
   );
 }

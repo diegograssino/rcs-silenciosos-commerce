@@ -9,7 +9,7 @@ import {
 import { Link } from 'react-router-dom';
 import Counter from './Counter';
 
-const ProductDetail = ({ data }) => {
+const ProductDetail = ({ data, add }) => {
   const [counter, setCounter] = useState(1);
   return (
     <Container className="pt-4">
@@ -35,7 +35,10 @@ const ProductDetail = ({ data }) => {
                   setter={setCounter}
                 />
                 <Link to="/checkout">
-                  <Button variant="success">
+                  <Button
+                    variant="success"
+                    onClick={() => add(data)}
+                  >
                     Comprar
                   </Button>
                 </Link>

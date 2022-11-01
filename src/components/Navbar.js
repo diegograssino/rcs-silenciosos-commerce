@@ -6,7 +6,7 @@ import {
 import BSNavbar from 'react-bootstrap/Navbar';
 import { Link } from 'react-router-dom';
 
-const Navbar = () => {
+const Navbar = ({ cart }) => {
   return (
     <BSNavbar bg="dark" variant="dark">
       <Container>
@@ -25,7 +25,7 @@ const Navbar = () => {
         <div>
           <Link to="/checkout">
             <Button variant="outline-success">
-              Cart (1)
+              Cart ({cart.length})
             </Button>
           </Link>
           <Link to="/login">

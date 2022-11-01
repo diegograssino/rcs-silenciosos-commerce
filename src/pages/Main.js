@@ -11,14 +11,14 @@ import ProductListContainer from '../components/ProductListContainer';
 import ProductDetailContainer from '../components/ProductDetailContainer.js';
 import { Route, Routes } from 'react-router-dom';
 
-const Main = () => {
+const Main = ({ cart, add }) => {
   return (
     <>
       <Container
         fluid
         className="px-0 d-flex flex-column min-vh-100"
       >
-        <Navbar />
+        <Navbar cart={cart} />
         <Routes>
           <Route
             path="/"
@@ -26,7 +26,9 @@ const Main = () => {
           />
           <Route
             path="/product/:id"
-            element={<ProductDetailContainer />}
+            element={
+              <ProductDetailContainer add={add} />
+            }
           />
           <Route
             path="/checkout"
