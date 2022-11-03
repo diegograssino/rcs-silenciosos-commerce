@@ -7,10 +7,13 @@ import {
 } from 'react-bootstrap';
 import validator from 'validator';
 
-const Checkout = () => {
+const Checkout = ({ cart, del }) => {
   const [name, setName] = useState('');
   const [mail, setMail] = useState('');
   const [phone, setPhone] = useState('');
+
+  const [confirmation, setConfirmation] =
+    useState(null);
 
   const [
     firstValidationName,
@@ -67,12 +70,54 @@ const Checkout = () => {
     });
   };
 
+  const delProduct = product => {
+    del(product);
+    setConfirmation(null);
+  };
+
   return (
     <Container className="my-3">
       <Card className="mb-3">
         <Card.Header>Mi Carrito</Card.Header>
         <Card.Body>
           <h2>Detalle del carrito</h2>
+          {cart.length
+            ? cart.map((c, i) => (
+                <div
+                  key={Symbol('i').toString() + i}
+                  className="mb-2"
+                >
+                  <Button
+                    className="me-4"
+                    variant="danger"
+                    onClick={() =>
+                      setConfirmation(c.id)
+                    }
+                  >
+                    Del
+                  </Button>
+                  {c.id === confirmation && (
+                    <Button
+                      onClick={() =>
+                        delProduct(c)
+                      }
+                      className="me-4"
+                    >
+                      Confirma borrado?
+                    </Button>
+                  )}
+                  <span className="me-4">
+                    {c.title}
+                  </span>
+                  <span className="me-4">
+                    x{c.q}
+                  </span>
+                  <span>
+                    Total ${c.price * c.q}
+                  </span>
+                </div>
+              ))
+            : 'Sin Productos!'}
         </Card.Body>
       </Card>
       <Card>

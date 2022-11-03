@@ -34,14 +34,21 @@ const ProductDetail = ({ data, add }) => {
                   counter={counter}
                   setter={setCounter}
                 />
-                <Link to="/checkout">
-                  <Button
-                    variant="success"
-                    onClick={() => add(data)}
-                  >
-                    Comprar
-                  </Button>
-                </Link>
+                {/* <Link to="/checkout"> */}
+                <Button
+                  variant="success"
+                  onClick={() =>
+                    add({
+                      id: data.id,
+                      title: data.title,
+                      price: data.price,
+                      q: counter,
+                    })
+                  }
+                >
+                  Comprar
+                </Button>
+                {/* </Link> */}
               </Container>
             </Container>
           </Col>
